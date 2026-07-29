@@ -1,4 +1,4 @@
-# 🌱        Baileys
+# 🌱 Baileys
 
 <p align="center">
    Baileys v7 mejorado con correcciones para subidas de medios en newsletters, además de soporte para mensajes interactivos, álbumes y tipos de mensajes adicionales.
@@ -151,12 +151,12 @@ Este fork está diseñado para uso en producción con un enfoque en claridad y s
 ```json
 # NPM
 "dependencies": {
-   "mitzuki-baileys": "latest"
+   "@whiskeysockets/baileys": "latest"
 }
 
 # GitHub
 "dependencies": {
-   "mitzuki-baileys": "github:mitzuki/baileys"
+ "@whiskeysockets/baileys": "github:elrebelde21/baileys"
 }
 ```
 
@@ -164,26 +164,26 @@ Este fork está diseñado para uso en producción con un enfoque en claridad y s
 
 ```bash
 # NPM
-npm i mitzuki-baileys@latest
+npm i whiskeysockets/baileys@latest
 
 # GitHub
-npm i github:mitzuki/baileys
+npm i github:elrebelde21/baileys
 ```
 
 #### 🧩 Importación (ESM y CJS)
 
 ```javascript
 // --- ESM
-import { makeWASocket } from 'mitzuki-baileys'
+import { makeWASocket } from '@whiskeysockets/baileys'
 
 // --- CJS
-const { makeWASocket } = require('mitzuki-baileys')
+const { makeWASocket } = require('@whiskeysockets/baileys')
 ```
 
 ### 🌐 Conectar a WhatsApp (Pasos Rápidos)
 
 ```javascript
-import { makeWASocket, delay, DisconnectReason, useMultiFileAuthState } from 'mitzuki-baileys'
+import { makeWASocket, delay, DisconnectReason, useMultiFileAuthState } from '@whiskeysockets/baileys'
 import { Boom } from '@hapi/boom'
 import pino from 'pino'
 
@@ -246,7 +246,7 @@ connectToWhatsApp()
 > Recomiendo encarecidamente construir tu propio almacén de datos, ya que mantener todo el historial de chat en memoria puede llevar a un uso excesivo de RAM.
 
 ```javascript
-import { makeWASocket, makeInMemoryStore, delay, DisconnectReason, useMultiFileAuthState } from 'mitzuki-baileys'
+import { makeWASocket, makeInMemoryStore, delay, DisconnectReason, useMultiFileAuthState } from '@whiskeysockets/baileys'
 import { Boom } from '@hapi/boom'
 import pino from 'pino'
 
@@ -336,23 +336,23 @@ sock.sendMessage(jid, {
 })
 
 // --- Enviar un mensaje de texto con vista previa del enlace
-const urlA = 'https://www.npmjs.com/package/mitzuki-baileys'
+const urlA = 'https://api.mitzuki.xyz'
 
 sock.sendMessage(jid, {
    text: urlA + ' 👆🏻 ¡Échale un vistazo!',
    linkPreview: {
       'matched-text': urlA,
-      title: '🌱 Mitzuki Baileys',
-      description: 'Fork mejorado de Baileys',
+      title: '🌱 Mitzuki Api',
+      description: 'Api para desarrolladores',
       previewType: 0,
       jpegThumbnail: fs.readFileSync('./ruta/a/imagen.jpg')
    }
 })
 
 // --- Enviar un mensaje de texto con vista previa grande y favicon
-import { prepareWAMessageMedia } from 'mitzuki-baileys'
+import { prepareWAMessageMedia } from '@whiskeysockets/baileys'
 
-const urlB = 'https://www.npmjs.com/package/mitzuki-baileys#readme'
+const urlB = 'https://www.npmjs.com/package/@whiskeysockets/baileys#readme'
 
 const { imageMessage: image } = await prepareWAMessageMedia({
    image: {
@@ -370,7 +370,7 @@ sock.sendMessage(jid, {
    text: urlB + ' 👆🏻 ¡Échale un vistazo!',
    linkPreview: {
       'matched-text': urlB,
-      title: '🌱 Mitzuki Baileys',
+      title: '🌱 Baileys',
       description: 'Fork mejorado de Baileys',
       previewType: 0,
       jpegThumbnail: fs.readFileSync('./ruta/a/imagen.jpg'),
@@ -516,7 +516,7 @@ const inviteCode = groupUrl
    ?.split('?')[0]
 
 const groupJid = '1201111111111@g.us'
-const groupName = 'Mitzuki Baileys'
+const groupName = 'Mitzuki'
 
 sock.sendMessage(jid, {
    groupInvite: {
@@ -541,7 +541,7 @@ sock.sendMessage(jid, {
       url: './ruta/a/imagen.jpg'
    },
    body: '👋🏻 ¡Mira mi producto aquí!',
-   footer: 'Mitzuki Baileys',
+   footer: 'Mitzuki',
    product: {
       currencyCode: 'IDR',
       description: '🛍️ ¡Producto interesante!',
@@ -549,9 +549,9 @@ sock.sendMessage(jid, {
       productId: randomUUID(),
       productImageCount: 1,
       salePriceAmount1000: 65_000_000,
-      signedUrl: 'https://www.npmjs.com/package/mitzuki-baileys',
+      signedUrl: 'https://api.mitzuki.xyz',
       title: '📦 Producto Premium',
-      url: 'https://www.npmjs.com/package/mitzuki-baileys'
+      url: 'https://tuimagen'
    },
    businessOwnerJid: '0@s.whatsapp.net'
 })
@@ -688,7 +688,7 @@ sock.sendMessage(jid, {
 > Puedes añadir fácilmente resaltado de sintaxis importando `tokenizeCode` directamente desde Baileys.
 
 ```javascript
-import { tokenizeCode } from 'mitzuki-baileys'
+import { tokenizeCode } from '@whiskeysockets/baileys'
 
 const language = 'javascript'
 const code = 'console.log("¡Hola, Mundo!")'
@@ -736,13 +736,13 @@ sock.sendMessage(jid, {
       title: 'Motor de búsqueda popular',
       url: 'https://www.google.com/'
    }, {
-      text: '2. YouTube',
-      title: 'Plataforma de streaming popular',
-      url: 'https://www.youtube.com/'
+      text: '2. Api',
+      title: 'Api para desarrolladores',
+      url: 'https://api.mitzuki.xyz'
    }, {
-      text: '3. Mitzuki Baileys',
+      text: '3. Baileys',
       title: 'Fork mejorado de Baileys',
-      url: 'https://www.npmjs.com/package/mitzuki-baileys'
+      url: 'https://www.npmjs.com/package/@whiskeysockets/baileys'
    }],
    footerText: '---'
 })
@@ -901,7 +901,7 @@ sock.sendMessage(jid, {
    }],
    name: '📦 Mi Paquete de Stickers',
    publisher: '🌟 Mitzuki',
-   description: 'Mitzuki Baileys'
+   description: 'Mitzuki'
 }, {
    quoted: message
 })
@@ -915,7 +915,7 @@ sock.sendMessage(jid, {
 // --- Mensaje con botones normal
 sock.sendMessage(jid, {
    text: '👆🏻 ¡Botones!',
-   footer: 'Mitzuki Baileys',
+   footer: 'Mitzuki',
    buttons: [{
       text: '👋🏻 Registrarse',
       id: '#Registro'
@@ -930,7 +930,7 @@ sock.sendMessage(jid, {
       url: './ruta/a/imagen.jpg'
    },
    caption: '👆🏻 ¡Botones y Flujo Nativo!',
-   footer: 'Mitzuki Baileys',
+   footer: 'Mitzuki',
    buttons: [{
       text: '👋🏻 Calificar',
       id: '#Calificar'
@@ -968,7 +968,7 @@ sock.sendMessage(jid, {
 ```javascript
 sock.sendMessage(jid, {
    text: '📋 ¡Lista!',
-   footer: 'Mitzuki Baileys',
+   footer: 'Mitzuki',
    buttonText: '📋 Seleccionar',
    title: '👋🏻 Hola',
    sections: [{
@@ -1000,12 +1000,12 @@ sock.sendMessage(jid, {
       url: './ruta/a/imagen.jpg'
    },
    caption: '🗄️ ¡Interactivo!',
-   footer: 'Mitzuki Baileys',
+   footer: 'Mitzuki',
    optionText: '👉🏻 Seleccionar Opciones',
    optionTitle: '📄 Seleccionar Opciones',
    offerText: '🏷️ ¡Nuevo Cupón!',
-   offerCode: 'Mitzuki Baileys',
-   offerUrl: 'https://www.npmjs.com/package/mitzuki-baileys',
+   offerCode: 'Mitzuki',
+   offerUrl: 'https://www.npmjs.com/package/',
    offerExpiration: Date.now() + 3_600_000,
    nativeFlow: [{
       text: '👋🏻 Saludo',
@@ -1016,10 +1016,10 @@ sock.sendMessage(jid, {
       call: '628123456789'
    }, {
       text: '📋 Copiar',
-      copy: 'Mitzuki Baileys'
+      copy: 'Mitzuki'
    }, {
       text: '🌐 Fuente',
-      url: 'https://www.npmjs.com/package/mitzuki-baileys',
+      url: 'https://www.npmjs.com/package/',
       useWebview: true
    }, {
       text: '📋 Seleccionar',
@@ -1051,7 +1051,7 @@ sock.sendMessage(jid, {
 // --- Carrusel y Flujo Nativo
 sock.sendMessage(jid, {
    text: '🗂️ ¡Interactivo con Carrusel!',
-   footer: 'Mitzuki Baileys',
+   footer: 'Mitzuki',
    cards: [{
       image: {
          url: './ruta/a/imagen.jpg'
@@ -1060,7 +1060,7 @@ sock.sendMessage(jid, {
       footer: '🏷️ Pinterest',
       nativeFlow: [{
          text: '🌐 Fuente',
-         url: 'https://www.npmjs.com/package/mitzuki-baileys',
+         url: 'https://www.npmjs.com/package/',
          useWebview: true
       }]
    }, {
@@ -1070,12 +1070,12 @@ sock.sendMessage(jid, {
       caption: '🖼️ Imagen 2',
       footer: '🏷️ Pinterest',
       offerText: '🏷️ ¡Nuevo Cupón!',
-      offerCode: 'Mitzuki Baileys',
-      offerUrl: 'https://www.npmjs.com/package/mitzuki-baileys',
+      offerCode: 'Mitzuki',
+      offerUrl: 'https://www.npmjs.com/package/',
       offerExpiration: Date.now() + 3_600_000,
       nativeFlow: [{
          text: '🌐 Fuente',
-         url: 'https://www.npmjs.com/package/mitzuki-baileys'
+         url: 'https://www.npmjs.com/package/'
       }]
    }, {
       image: {
@@ -1086,8 +1086,8 @@ sock.sendMessage(jid, {
       optionText: '👉🏻 Seleccionar Opciones',
       optionTitle: '👉🏻 Seleccionar Opciones',
       offerText: '🏷️ ¡Nuevo Cupón!',
-      offerCode: 'Mitzuki Baileys',
-      offerUrl: 'https://www.npmjs.com/package/mitzuki-baileys',
+      offerCode: 'Mitzuki',
+      offerUrl: 'https://www.npmjs.com/package/',
       offerExpiration: Date.now() + 3_600_000,
       nativeFlow: [{
          text: '🛒 Producto',
@@ -1095,7 +1095,7 @@ sock.sendMessage(jid, {
          icon: 'default'
       }, {
          text: '🌐 Fuente',
-         url: 'https://www.npmjs.com/package/mitzuki-baileys'
+         url: 'https://www.npmjs.com/package/'
       }]
    }]
 }, {
@@ -1131,13 +1131,13 @@ sock.sendMessage(jid, {
       url: './ruta/a/imagen.jpg'
    },
    caption: '🫙 ¡Plantilla!',
-   footer: 'Mitzuki Baileys',
+   footer: 'Mitzuki',
    templateButtons: [{
       text: '👉?? Tocar Aquí',
       id: '#Pedido'
    }, {
       text: '🌐 Fuente',
-      url: 'https://www.npmjs.com/package/mitzuki-baileys'
+      url: 'https://www.npmjs.com/package/'
    }, {
       text: '📞 Llamar',
       call: '628123456789'
@@ -1238,7 +1238,7 @@ sock.sendMessage(jid, {
       body: '❓ No lo sé',
       thumbnail: fs.readFileSync('./ruta/a/imagen.jpg'),
       largeThumbnail: false,
-      url: 'https://www.npmjs.com/package/mitzuki-baileys'
+      url: 'https://www.npmjs.com/package'
    }
 }, {
    quoted: message
@@ -1282,7 +1282,7 @@ sock.sendMessage(jid, {
       text: '📃 Construido manualmente desde cero usando la estructura proto cruda de WhatsApp',
       contextInfo: {
          externalAdReply: {
-            title: 'Mitzuki Baileys',
+            title: 'Mitzuki',
             thumbnail: fs.readFileSync('./ruta/a/imagen.jpg'),
             sourceApp: 'whatsapp',
             showAdAttribution: true,
@@ -1413,7 +1413,7 @@ console.log('🏷️ ID de usuario obtenido', ':', ids)
 
 ```javascript
 const phoneNumber = '6281111111111'
-const customPairingCode = 'MITZUKI'
+const customPairingCode = 'JADI-BOTS'
 
 await sock.requestPairingCode(phoneNumber, customPairingCode)
 
@@ -1465,7 +1465,7 @@ console.dir(output, { depth: null })
 
 ```javascript
 // --- Crear uno nuevo
-sock.newsletterCreate('Mitzuki Baileys', '📣 Actualizaciones semanales')
+sock.newsletterCreate('Mitzuki', '📣 Actualizaciones semanales')
 
 // --- Obtener información
 const metadata = sock.newsletterMetadata('1231111111111@newsletter')
@@ -1493,7 +1493,7 @@ sock.newsletterChangeOwner('1231111111111@newsletter', '6281111111111@s.whatsapp
 sock.newsletterUpdate('1231111111111@newsletter', { name: 'Mitzuki Baileys' })
 
 // --- Cambiar nombre
-sock.newsletterUpdateName('1231111111111@newsletter', '📦 Mitzuki Baileys')
+sock.newsletterUpdateName('1231111111111@newsletter', '📦 Mitzuki')
 
 // --- Cambiar descripción
 sock.newsletterUpdateDescription('1231111111111@newsletter', '📣 Actualizaciones semanales')
@@ -1564,7 +1564,7 @@ sock.groupParticipantsUpdate(jid, ['628123456789@s.whatsapp.net'], 'demote')
 sock.groupRequestParticipantsUpdate(jid, ['628123456789@s.whatsapp.net'], 'approve')
 
 // --- Cambiar nombre
-sock.groupUpdateSubject(jid, '📦 Mitzuki Baileys')
+sock.groupUpdateSubject(jid, '📦 Mitzuki')
 
 // --- Cambiar descripción
 sock.groupUpdateDescription(jid, 'Descripción actualizada')
@@ -1625,7 +1625,7 @@ sock.updateMemberLabel(jid, 'Mitzuki Baileys')
 
 ```javascript
 // --- Crear una nueva y agregar descripción
-const community = await sock.communityCreate('Mitzuki Baileys', '📣 Actualizaciones semanales')
+const community = await sock.communityCreate('Mitzuki', '📣 Actualizaciones semanales')
 console.dir(community, { depth: null })
 
 // --- Crear un subgrupo para la comunidad y agregar participantes usando sus JIDs
@@ -1658,7 +1658,7 @@ sock.communityLeave(jid)
 sock.communityRequestParticipantsUpdate(jid, ['628123456789@s.whatsapp.net'], 'approve')
 
 // --- Cambiar nombre
-sock.communityUpdateSubject(jid, '📦 Mitzuki Baileys')
+sock.communityUpdateSubject(jid, '📦 Mitzuki')
 
 // --- Cambiar descripción
 sock.communityUpdateDescription(jid, 'Descripción actualizada')
@@ -1826,7 +1826,7 @@ console.dir(order, { depth: null })
 await sock.updateBusinessProfile({
    address: 'Jakarta, Indonesia',
    description: '🛒 Tienda Oficial',
-   websites: ['https://www.npmjs.com/package/mitzuki-baileys'],
+   websites: ['https://www.npmjs.com/package/'],
    email: 'correo@ejemplo.com',
    hours: {
       timezone: 'Asia/Jakarta',
@@ -1932,17 +1932,6 @@ sock.ev.on('newsletter-settings.update', (update) => {})
 sock.ev.on('settings.update', (update) => {})
 ```
 
-### 🚀 Probar el Bot
-
-Un bot de WhatsApp rápido, ligero y modular construido con **Mitzuki Baileys**.
-Perfecto para gestionar grupos, moderar chats y añadir diversión con juegos de preguntas y herramientas útiles.
-
-👉🏻 [@itsliaaa/starseed](https://github.com/itsliaaa/starseed#readme)
-
-Un wrapper ligero pero potente de Baileys diseñado para simplificar el desarrollo mientras amplía el soporte para tipos de mensajes adicionales y funciones de WhatsApp.
-
-👉🏻 [@itsliaaa/starcore](https://www.npmjs.com/package/@itsliaaa/starcore)
-
 ### 📦 Base del Fork
 
 Este fork está basado en [Baileys (GitHub)](https://github.com/WhiskeySockets/Baileys)
@@ -1956,7 +1945,7 @@ El crédito completo es atribuido a los mantenedores y colaboradores originales 
 - [jlucaso1](https://github.com/jlucaso1)
 - [adiwajshing](https://github.com/adiwajshing)
 
-**Mitzuki Baileys** es un fork modificado que incluye mejoras adicionales basadas en el trabajo de [Lia Wynn](https://github.com/itsliaaa).
+**Este Baileys** es un fork modificado que incluye mejoras adicionales basadas en el trabajo de [itsliaaa/baileys](https://github.com/itsliaaa/baileys).
 
 > [!CAUTION]
 > ⚠️ **La modificación, eliminación o tergiversación de estos créditos está estrictamente prohibida. Cualquier redistribución o fork debe preservar esta sección en su forma original sin excepción.**
