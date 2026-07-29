@@ -1,4 +1,4 @@
-# 🌱 Baileys
+# 🌱        Baileys
 
 <p align="center">
    Baileys v7 mejorado con correcciones para subidas de medios en newsletters, además de soporte para mensajes interactivos, álbumes y tipos de mensajes adicionales.
